@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <style>
+        .box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <form>
+            <input type="text" name="name" id="nam">
+            
+            <input type="email" name="mail" id="mail">
+            
+            <input type="number" name="num" id="num">
+            
+            
+
+            <button>Submit s</button>
+        </form>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+    <script>
+        let btn = document.querySelector('button');
+        btn.addEventListener('click',async function(e){
+            e.preventDefault();
+
+            let name = document.getElementById("nam").value;
+            let mail = document.getElementById("mail").value;
+            let number = document.getElementById("num").value;
+            let resp = await axios.post('/signup',{name,mail,phn});
+            console.log('resp',resp);
+        })
+
+    </script>
+
+</body>
+</html>
