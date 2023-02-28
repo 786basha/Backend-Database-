@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp for 2nd year B.tech</title>
+    <style>
+        *{
+            padding: 0;margin: 0;box-sizing: border-box;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+        }
+        .box{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        form{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        form input{
+            margin: 10px;
+            padding: 10px;
+            width: 20vw;
+            
+            
+        }
+        button{
+            width: 20vw;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form action="">
+            <input type="text" placeholder="User name" name="" id="uname">
+            <input type="text" placeholder="Roll number" name="" id="uhall">
+            <input type="text" placeholder="PAN details" id="upan">
+            <input type="number" placeholder="Aadhaar" name="" id="uadar">
+            <button>Submit</button>
+        </form>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script>
+        let btn = document.querySelector('button');
+        btn.addEventListener('click',async function(e){
+
+            e.preventDefault();
+
+            let name=document.getElementById('uname').value;
+            let hall = document.getElementById('uhall').value;
+            let pan = document.getElementById('upan').value;
+            let adar = document.getElementById('uadar').value;
+
+            let resp = await axios.post('/login',{name,hall,pan,adar});
+
+        })
+    </script>
+
+</body>
+</html>
