@@ -3,7 +3,7 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
-app.listen(3000);
+app.listen(8000);
 console.log("Server started");
 
 let db_link = 'mongodb+srv://king:king@gist001.xtt8zeu.mongodb.net/test';
@@ -32,16 +32,18 @@ auth
 // .delete(delUser)
 
 
-function getUser(req,res){
+async function getUser(req,res){
     console.log("Admin Router called");
-    res.sendFile('/new/delete_cse.html',{root:__dirname});
+    res.sendFile('/Web/admin.html',{root:__dirname});
+
+   
+
 }
 
 async function postUser(req,res){
     let obj = req.body;
-    let createdbobj = Trash_cse.create(obj);
-    let dbobj = await DataBase_CSE.findOneAndDelete(obj);
-    console.log(obj);
+    let dbobj = await DataBase_CSE.findOne(obj);
+    console.log(dbobj);
 }
 
 // async function delUser(req,res,){
@@ -59,7 +61,6 @@ async function postSignup(req,res){
     let obj = req.body;
     let dbobj = await DataBase_CSE.create(obj);
     console.log("DataBase Data updated :",dbobj);
-
 }
 
 // creating schemas for adding data to database
@@ -69,18 +70,23 @@ const userSchema = mongoose.Schema({
         type:String,
         require:true
     },
-    hall:{
+    rollnumber:{
         type:String,
         unique:true,
         require:true
     },
-    pan:{
+    pancard:{
         type:String,
         unique:true,
         require:true
     },
-    adar:{
-        type:Number,
+    aadhaar:{
+        type:String,
+        unique:true,
+        require:true
+    },
+    number:{
+        type:String,
         unique:true,
         require:true
     }
@@ -88,7 +94,7 @@ const userSchema = mongoose.Schema({
 const DataBase_CSE = mongoose.model('DataBase_CSE',userSchema);
 
 const deleteSchema = mongoose.Schema({
-    hall:{
+    rollnumber:{
         type:String,
         require:true
     }

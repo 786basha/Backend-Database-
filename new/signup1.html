@@ -32,7 +32,7 @@
         form input{
             margin: 10px;
             padding: 10px;
-            width: 20vw;
+            width: 240px;
             
             
         }
@@ -43,14 +43,23 @@
     </style>
 </head>
 <body>
+    <div class="hope">
+        
+    </div>
     <div class="box">
-        <form action="">
+        <form>
+            <h2>Student signup form</h2>
             <input type="text" placeholder="User name" name="" id="uname">
             <input type="text" placeholder="Roll number" name="" id="uhall">
             <input type="text" placeholder="PAN details" id="upan">
-            <input type="number" placeholder="Aadhaar" name="" id="uadar">
+            <input type="text" placeholder="Aadhaar" name="" id="uadar">
+            <p style="font-size: 10px;text-transform: capitalize;font-weight: bold;">please provide a valid mobile number which is Linked with Aadhaar</p>
+            <input type="text" placeholder="Mobile Number" name="" id="unum">
             <button>Submit</button>
+            <p id="res"></p>
         </form>
+
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
@@ -61,14 +70,22 @@
             e.preventDefault();
 
             let name=document.getElementById('uname').value;
-            let hall = document.getElementById('uhall').value;
-            let pan = document.getElementById('upan').value;
-            let adar = document.getElementById('uadar').value;
-
-            let resp = await axios.post('/login',{name,hall,pan,adar});
+            let rollnumber = document.getElementById('uhall').value;
+            let pancard = document.getElementById('upan').value;
+            let aadhaar = document.getElementById('uadar').value;
+            let number = document.getElementById('unum').value;
+            let resp = await axios.post('/login',{name,rollnumber,pancard,aadhaar,number});
 
         })
+        // let bb = document.querySelector('button');
+        // bb.addEventListener('click',async function(e){
+        //     if(response == 1){
+        //         document.getElementById('res').innerHTML= "Signup Success";
+        //     }
+        // })
     </script>
+    <!-- <script src="/test_backend_cse.js"></script> -->
+    
 
 </body>
 </html>
